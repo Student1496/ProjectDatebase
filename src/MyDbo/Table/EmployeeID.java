@@ -1,17 +1,17 @@
 package MyDbo.Table;
 
-public class EmployeeID {
-    private int employeeID;
+public class EmployeeID implements Comparable<EmployeeID> {
+    private String employeeID;
 
-    public EmployeeID(int employeeID) {
+    public EmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
-    public int getEmployeeID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -20,5 +20,11 @@ public class EmployeeID {
         return "EmployeeID{" +
                 "employeeID=" + employeeID +
                 '}';
+    }
+
+    @Override
+    public int compareTo(EmployeeID o) {
+        int compare=this.employeeID.compareTo(o.employeeID);
+        return  compare==0 ? this.employeeID.compareTo(o.employeeID) :compare;
     }
 }
