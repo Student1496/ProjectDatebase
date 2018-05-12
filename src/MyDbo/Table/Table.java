@@ -31,8 +31,10 @@ public class Table implements Serializable{
         this.table = table;
     }
 
-    public void addRecord(Record record){
-        table.add(record);
+    public void addRecord(List<Record> list){
+        Iterator<Record> i= list.iterator();
+        while (i.hasNext())
+        table.add(i.next());
     }
 
     public void dropTabel(){
