@@ -7,8 +7,7 @@ public class Region {
         this.region = region;
     }
 
-    public String getRegion() {
-        return region;
+    public String getRegion() { return region;
     }
 
     public void setRegion(String region) {

@@ -1,5 +1,5 @@
 package MyDbo.Query;
 
-public class Select extends ModifyTable {
+public class Select {
 
 }

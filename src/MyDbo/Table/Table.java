@@ -1,38 +1,92 @@
 package MyDbo.Table;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class Table {
+public class Table implements Serializable{
 
-    private String nameTabe;
-    private Map<EmployeeID,Record> table;
+    private String nameTable;
+    private List<Record> table;
 
-    public Table(String nameTabe) {
-        this.nameTabe = nameTabe;
-        this.table = new TreeMap<EmployeeID,Record>();
+    public Table(String nameTable) {
+        this.nameTable = nameTable;
+        this.table = new ArrayList<>();
     }
 
-    public String getNameTabe() {
-        return nameTabe;
+    public String getNameTable() {
+        return nameTable;
     }
 
-    public void setNameTabe(String nameTabe) {
-        this.nameTabe = nameTabe;
+    public void setNameTabe(String nameTable) {
+        this.nameTable = nameTable;
     }
 
-    public Map<EmployeeID, Record> getTable() {
+    public List<Record> getTable() {
         return table;
     }
 
-    public void setTable(Map<EmployeeID, Record> table) {
+    public void setTable(List<Record> table) {
         this.table = table;
+    }
+
+    public void addRecord(Record record){
+        table.add(record);
+    }
+
+    public void dropTabel(){
+        table.clear();
+    }
+
+    public void  dropRecord(Record record){
+        table.remove(record);
+    }
+
+    public void update(Record old ,Record record){
+        table.set(table.indexOf(old),record);
+    }
+
+    public void storeTable() throws IOException {
+        File file = new File(nameTable+".txt");
+        try {
+            file.createNewFile();
+        }catch(IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+       FileOutputStream fos= new FileOutputStream(file);
+       ObjectOutputStream oos=new ObjectOutputStream(fos);
+
+        Iterator<Record> iterator=table.iterator();
+        while(iterator.hasNext()){
+            oos.writeObject(iterator.next());
+        }
+
+        oos.close();
+    }
+
+    public void loadTable() throws IOException, ClassNotFoundException {
+        File file = new File(nameTable+".txt");
+        FileInputStream fis= new FileInputStream(file);
+        ObjectInputStream ois=new ObjectInputStream(fis);
+
+        this.dropTabel();
+
+        try {
+
+            this.table=(ArrayList)ois.readObject();
+            ois.close();
+        }
+        catch(Exception e) {}
+
     }
 
     @Override
     public String toString() {
         return "Table{" +
-                "nameTabe='" + nameTabe + '\'' +
+                "nameTable='" + nameTable + '\'' +
                 ", table=" + table +
                 '}';
     }

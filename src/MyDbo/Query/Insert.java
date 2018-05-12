@@ -1,5 +1,5 @@
 package MyDbo.Query;
 
-public class Insert extends ModifyTable {
+public class Insert {
 
 }

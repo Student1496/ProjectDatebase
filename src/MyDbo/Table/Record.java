@@ -24,15 +24,6 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" +
-                "address=" + address +
-                ", birthDate=" + birthDate +
-                ", city=" + city +
-                ", employeeID=" + employeeID +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", phone=" + phone +
-                ", region=" + region +
-                '}';
+        return "Record{" + "address=" + address + ", birthDate=" + birthDate + ", city=" + city + ", employeeID=" + employeeID + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", region=" + region + '}';
     }
 }
