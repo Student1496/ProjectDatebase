@@ -16,16 +16,13 @@ public class SubQuery implements MyQuery{
 
     @Override
     public void exec() throws IOException {
-       String[] subqery = qery.split(" ,()");
+       String[] subqery = qery.split(" ");
 
-        if((subqery[0].equals("CREATE") && subqery[1].equals("TABLE")) || (subqery[0].equals("create")&& subqery[1].equals("TABLE")))
+        if((subqery[0].equals("CREATE") && subqery[1].equals("TABLE")) || (subqery[0].equals("create")&& subqery[1].equals("table")))
         {
             Create create= new Create(subqery[2]);
-            try {
-                create.store();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            create.store();
         }
+
     }
 }

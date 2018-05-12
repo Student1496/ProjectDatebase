@@ -47,7 +47,7 @@ public class Table implements Serializable{
         table.set(table.indexOf(old),record);
     }
 
-    public void storeTable() throws IOException {
+    public void createTable(){
         File file = new File(nameTable+".txt");
         try {
             file.createNewFile();
@@ -55,9 +55,12 @@ public class Table implements Serializable{
         {
             System.out.println(e.getMessage());
         }
+    }
 
-       FileOutputStream fos= new FileOutputStream(file);
-       ObjectOutputStream oos=new ObjectOutputStream(fos);
+    public void storeTable() throws IOException {
+        File file = new File(nameTable+".txt");
+        FileOutputStream fos= new FileOutputStream(file);
+        ObjectOutputStream oos=new ObjectOutputStream(fos);
 
         Iterator<Record> iterator=table.iterator();
         while(iterator.hasNext()){

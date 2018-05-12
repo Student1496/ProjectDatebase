@@ -2,8 +2,6 @@ package MyDbo.Query;
 
 import MyDbo.Table.Table;
 
-import java.io.IOException;
-
 public class Create {
 
     Table table;
@@ -13,11 +11,7 @@ public class Create {
 
     }
 
-    public void store() throws IOException {
-        try {
-            table.storeTable();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void store() {
+        table.createTable();
     }
 }
