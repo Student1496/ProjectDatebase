@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class Phone {
+import java.io.Serializable;
+
+public class Phone implements Serializable{
     private String phone;
 
     public Phone(String phone) {

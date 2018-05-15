@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable{
     private String address;
 
     public Address(String address) {

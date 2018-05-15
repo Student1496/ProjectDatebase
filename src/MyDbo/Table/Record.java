@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class Record {
+import java.io.Serializable;
+
+public class Record implements Serializable{
     private Address address;
     private BirthDate birthDate;
     private City city;
@@ -19,6 +21,17 @@ public class Record {
         this.lastName = lastName;
         this.phone = phone;
         this.region = region;
+    }
+
+    public Record(String address, String birthDate, String city, String employeeID, String firstName, String lastName, String phone, String region) {
+        this.address =new Address(address);
+        this.birthDate =new BirthDate(birthDate);
+        this.city =new City(city);
+        this.employeeID =new EmployeeID(employeeID);
+        this.firstName =new FirstName(firstName);
+        this.lastName = new LastName(lastName);
+        this.phone =new Phone(phone);
+        this.region =new Region(region);
     }
 
 

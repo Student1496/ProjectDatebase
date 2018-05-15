@@ -1,8 +1,7 @@
 package MyDbo.Statement;
 
 import MyDbo.MyQuery;
-import MyDbo.Query.Create;
-import MyDbo.Query.Insert;
+import MyDbo.Query.*;
 import MyDbo.Table.*;
 
 import java.io.IOException;
@@ -38,7 +37,25 @@ public class SubQuery implements MyQuery{
 
             Insert insert = new Insert(subqery[2],list);
             insert.insertRecords();
+        }else if (subqery[0].equals("SELECT")||subqery[0].equals("select"))
+        {
+            if(subqery[1].equals("*") && (subqery[2].equals("from") || subqery[2].equals("FROM")))
+            {
+                Select select=new Select(subqery[3]);
+                select.showRecords();
+            }
+
+        }else if(subqery[0].equals("DELETE") || (subqery[0].equals("delete")))
+        {
+            Delete delete=new Delete(subqery[1]);
+            delete.deleteRecord();
+        }else if((subqery[0].equals("UPDATE") || subqery[0].equals("update")) && (subqery[2].equals("set") || subqery[2].equals("SET")))
+        {
+            Update update= new Update(subqery[1]);
         }
+
+        else System.out.println("bledne zapytanie");
+
 
     }
 }

@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class Region {
+import java.io.Serializable;
+
+public class Region implements Serializable {
     private String region;
 
     public Region(String region) {

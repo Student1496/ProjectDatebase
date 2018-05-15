@@ -7,8 +7,9 @@ public class Main {
 
     static public void main(String [] args)
     {
-        System.out.println("WELCOME IN DATABESE, ENTER STATMENT");
+        System.out.println("WELCOME IN DATABASE, ENTER STATEMENT");
         Scanner scanner= new Scanner(System.in);
+
 
         while (true)
         {

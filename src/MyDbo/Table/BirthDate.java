@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class BirthDate {
+import java.io.Serializable;
+
+public class BirthDate implements Serializable{
     private String birthDate;
 
     public BirthDate(String birthDate) {

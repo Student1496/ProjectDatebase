@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class EmployeeID implements Comparable<EmployeeID> {
+import java.io.Serializable;
+
+public class EmployeeID implements Comparable<EmployeeID>,Serializable {
     private String employeeID;
 
     public EmployeeID(String employeeID) {

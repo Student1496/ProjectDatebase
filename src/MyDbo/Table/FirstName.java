@@ -1,6 +1,8 @@
 package MyDbo.Table;
 
-public class FirstName {
+import java.io.Serializable;
+
+public class FirstName implements Serializable {
     private String firstName;
 
     public FirstName(String firstName) {

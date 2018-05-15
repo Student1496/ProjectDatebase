@@ -39,7 +39,9 @@ public class Table implements Serializable{
 
     public void dropTabel(){
         table.clear();
-    }
+        File file = new File(nameTable+".txt");
+        file.delete();
+        }
 
     public void  dropRecord(Record record){
         table.remove(record);
@@ -67,7 +69,7 @@ public class Table implements Serializable{
         Iterator<Record> iterator=table.iterator();
         while(iterator.hasNext()){
             oos.writeObject(iterator.next());
-        }
+            }
 
         oos.close();
     }
@@ -77,14 +79,23 @@ public class Table implements Serializable{
         FileInputStream fis= new FileInputStream(file);
         ObjectInputStream ois=new ObjectInputStream(fis);
 
-        this.dropTabel();
-
         try {
-
-            this.table=(ArrayList)ois.readObject();
-            ois.close();
-        }
+            Record record=null;
+            record=(Record) ois.readObject();
+           this.table.add(record);
+           }
         catch(Exception e) {}
+
+        ois.close();
+
+    }
+
+    public void showTable()
+    {
+        Iterator<Record> i=this.table.listIterator();
+
+        while (i.hasNext())
+            System.out.println(i.next().toString());
 
     }
 
