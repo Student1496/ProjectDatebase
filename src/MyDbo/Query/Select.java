@@ -5,7 +5,7 @@ import MyDbo.Table.Table;
 import java.io.IOException;
 
 public class Select {
-        Table table;
+    private Table table;
 
     public Select(String tabelName) {
         this.table = new Table(tabelName);

@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class City implements Serializable{
     private String city;
 
+    public City() {
+        this.city = "NULL";
+    }
+
     public City(String city) {
         this.city = city;
     }

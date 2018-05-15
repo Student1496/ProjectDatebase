@@ -2,19 +2,30 @@ package MyDbo.Table;
 
 import java.io.Serializable;
 
-public class EmployeeID implements Comparable<EmployeeID>,Serializable {
-    private String employeeID;
+public class EmployeeID implements Serializable{
+    private int employeeID;
+    private static int identity;
 
-    public EmployeeID(String employeeID) {
-        this.employeeID = employeeID;
+    public EmployeeID() {
+        this.identity=0;
     }
 
-    public String getEmployeeID() {
+    public int getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity() {
+        this.identity = identity++;
+    }
+
+    public int getEmployeeID() {
+
         return employeeID;
     }
 
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployeeID()
+    {
+        this.employeeID = identity;
     }
 
     @Override
@@ -24,9 +35,4 @@ public class EmployeeID implements Comparable<EmployeeID>,Serializable {
                 '}';
     }
 
-    @Override
-    public int compareTo(EmployeeID o) {
-        int compare=this.employeeID.compareTo(o.employeeID);
-        return  compare==0 ? this.employeeID.compareTo(o.employeeID) :compare;
-    }
 }

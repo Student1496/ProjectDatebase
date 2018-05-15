@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Insert {
 
-    Table table;
-    List<Record> recordList;
+    private Table table;
+    private List<Record> recordList;
 
     public Insert(String tabelName, List<Record> recordList) {
         this.table = new Table(tabelName);

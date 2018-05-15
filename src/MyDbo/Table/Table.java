@@ -12,7 +12,7 @@ public class Table implements Serializable{
 
     public Table(String nameTable) {
         this.nameTable = nameTable;
-        this.table = new ArrayList<>();
+        this.table = new ArrayList<Record>();
     }
 
     public String getNameTable() {
@@ -51,7 +51,7 @@ public class Table implements Serializable{
         table.set(table.indexOf(old),record);
     }
 
-    public void createTable(){
+    public void createTable(Record record){
         File file = new File(nameTable+".txt");
         try {
             file.createNewFile();
@@ -59,6 +59,35 @@ public class Table implements Serializable{
         {
             System.out.println(e.getMessage());
         }
+
+        FileOutputStream fos= null;
+        try {
+            fos = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ObjectOutputStream oos= null;
+        try {
+            oos = new ObjectOutputStream(fos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Iterator<String> iterator=record.getCoulmnsName().iterator();
+        while(iterator.hasNext()){
+            try {
+                oos.writeObject(iterator.next());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void storeTable() throws IOException {
@@ -93,6 +122,15 @@ public class Table implements Serializable{
     public void showTable()
     {
         Iterator<Record> i=this.table.listIterator();
+
+        while (i.hasNext())
+            System.out.println(i.next().toString());
+
+    }
+
+    public void showTable(Record record)
+    {
+        Iterator<String> i=record.getCoulmnsName().listIterator();
 
         while (i.hasNext())
             System.out.println(i.next().toString());

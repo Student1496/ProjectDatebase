@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class Address implements Serializable{
     private String address;
 
+    public Address() {
+        this.address = "NULL";
+    }
+
     public Address(String address) {
         this.address = address;
     }

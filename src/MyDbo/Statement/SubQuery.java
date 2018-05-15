@@ -23,7 +23,12 @@ public class SubQuery implements MyQuery{
 
         if((subqery[0].equals("CREATE") && subqery[1].equals("TABLE")) || (subqery[0].equals("create")&& subqery[1].equals("table")))
         {
-            Create create= new Create(subqery[2]);
+            List<String> namesOfColumns=new ArrayList<String>();
+
+            for(int i=3;i<subqery.length;i++)
+                namesOfColumns.add(subqery[i]);
+
+            Create create= new Create(subqery[2],namesOfColumns);
             create.store();
         }else if ((subqery[0].equals("INSERT") && subqery[1].equals("INTO")) || (subqery[0].equals("insert")&& subqery[1].equals("into")))
         {
@@ -31,7 +36,7 @@ public class SubQuery implements MyQuery{
 
             if(subqery[3].equals("VALUES") || subqery[3].equals("values"))
             {
-                Record record= new Record(new Address(subqery[4]),new BirthDate(subqery[5]),new City(subqery[6]),new EmployeeID(subqery[7]), new FirstName(subqery[8]),new LastName(subqery[9]),new Phone(subqery[10]),new Region(subqery[11]));
+                Record record= new Record(new Address(subqery[4]),new BirthDate(subqery[5]),new City(subqery[6]), new FirstName(subqery[8]),new LastName(subqery[9]),new Phone(subqery[10]),new Region(subqery[11]));
                 list.add(record);
             }
 

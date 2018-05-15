@@ -5,8 +5,12 @@ import java.io.Serializable;
 public class BirthDate implements Serializable{
     private String birthDate;
 
+    public BirthDate() {
+        this.birthDate = "NULL";
+    }
+
     public BirthDate(String birthDate) {
-        this.birthDate = birthDate;
+        this.birthDate =birthDate;
     }
 
     public String getBirthDate() {

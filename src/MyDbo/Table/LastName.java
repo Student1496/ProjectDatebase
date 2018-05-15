@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class LastName implements Serializable {
     private String lastName;
 
+    public LastName() {
+        this.lastName = "NULL";
+    }
+
     public LastName(String lastName) {
         this.lastName = lastName;
     }
